@@ -47,6 +47,12 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "lego car set",
+      "image": "https://m.media-amazon.com/images/I/81Rzq2-rUIL._AC_SL1500_.jpg",
+      "likes": 0,
+      "id": 9
     }
   ]
 }
