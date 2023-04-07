@@ -7,17 +7,15 @@ function ToyForm({addToy}) {
     likes : 0
   })
 
-
   function handleOnChange(e){
     const key = e.target.name
     const value = e.target.value
-
     setFormData({...formData, [key] : value})
   }
 
   function handleOnSubmit(e){
     e.preventDefault(0)
-    addToy(formData)
+    addToy(formData) //from App Component
   }
 
   return (

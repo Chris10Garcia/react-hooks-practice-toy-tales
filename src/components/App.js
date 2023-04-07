@@ -10,16 +10,20 @@ function App() {
   const [showForm, setShowForm] = useState(false);
   const [toyList, setToyList] = useState([])
 
+
+  // get full data list once
   useEffect( ()=>{
     fetch(jsonAPI)
     .then( r => r.json())
     .then(data => setToyList(data))
     }, [])
 
+  // show / hide form
   function handleClick() {
     setShowForm((showForm) => !showForm);
   }
 
+  // adds new toy object. function is propped down to ToyForm Container
   function addToy (formData){
     fetch(jsonAPI, {
       method: "POST",
@@ -30,6 +34,7 @@ function App() {
     .then(data => setToyList([...toyList, data]) ) 
   }
 
+  // deletes toy using ID. function is propped down
   function deleteToy(id){
     fetch(jsonAPI + "/" + id, {
       method: "DELETE",
@@ -41,6 +46,7 @@ function App() {
     })
   }
 
+  // updates number of likes using id and previous like value. function is propped down
   function updateLikes(id, likes){
     fetch(jsonAPI + "/" + id, {
       method: "PATCH",
