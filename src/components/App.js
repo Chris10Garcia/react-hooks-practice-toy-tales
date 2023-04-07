@@ -27,8 +27,31 @@ function App() {
       body: JSON.stringify(formData)
     })
     .then(r => r.json())
-    .then(data => setToyList([...toyList, data]) )
-    
+    .then(data => setToyList([...toyList, data]) ) 
+  }
+
+  function deleteToy(id){
+    fetch(jsonAPI + "/" + id, {
+      method: "DELETE",
+      headers: {"Content-Type" : "application/json"},
+    })
+    .then( () => {
+      const newList = toyList.filter(toy => toy.id !== id)
+      setToyList(newList)
+    })
+  }
+
+  function updateLikes(id, likes){
+    fetch(jsonAPI + "/" + id, {
+      method: "PATCH",
+      headers: {"Content-Type" : "application/json"},
+      body: JSON.stringify({likes: parseInt(likes) + 1})
+    })
+    .then(r => r.json())
+    .then(data => {
+      const newList = toyList.map(toy => toy.id === id ? data : toy)
+      setToyList(newList)
+    })
   }
 
   return (
@@ -38,7 +61,7 @@ function App() {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toyList = {toyList} />
+      <ToyContainer updateLikes = {updateLikes} deleteToy={ deleteToy} toyList = {toyList} />
     </>
   );
 }

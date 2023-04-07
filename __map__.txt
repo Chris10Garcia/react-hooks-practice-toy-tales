@@ -2,8 +2,7 @@
 
 
 index.js
-|--- App
-    |--- Header
-    |--- ToyForm / {null}
-    |--- ToyContainer
+|--- App [toyList]
+    |--- ToyForm / {null} [formData]
+    |--- ToyContainer 
         |--- ToyCard
